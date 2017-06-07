@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 public class Controller {
-    @RequestMapping("/")
+    @RequestMapping("/test")
     public String index() {
-        return "Bienvenido a Spring Boot";
+        return "{ \"ok\": \"true\" }";
     }
 }

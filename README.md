@@ -12,7 +12,8 @@ Requerimientos
 Construcción y ejecución
 ------------------------
 
+    cd back-end
     mvn package
     java -jar target/idc-1.0-SNAPSHOT.jar
 
-Luego abrir en un navegador [http://localhost:8080/](http://localhost:8080/)
+Luego abrir en un navegador [http://localhost:8080/test](http://localhost:8080/test)
