@@ -1,0 +1,16 @@
+{
+  "name": "idc",
+  "version": "1.0.0",
+  "description": "Inspector de código",
+  "main": "app/index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "Marco Bravo <marco.bravo@tsoftlatam.com>",
+  "devDependencies": {
+    "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
