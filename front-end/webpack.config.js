@@ -1,6 +1,12 @@
 var path = require('path');
 
 module.exports = {
+	module: {
+		rules: [{
+			test: /\.css$/,
+			use: ['style-loader','css-loader']
+		}]
+	},
 	entry: "./app/index.js",
 	output: {
 		filename: "bundle.js",
