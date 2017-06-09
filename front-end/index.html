@@ -2,20 +2,160 @@
 <html>
   <head>
     <meta charset="UTF-8"/>
-    <title>Inspector de código</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon-precomposed" href="images/favicon.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <title>Inspector de código</title>
   </head>
   <body>
+    <!-- CSS y JavaScript compilados por Webpack -->
     <script src="dist/bundle.js"></script>
 
-    <!-- Accent-colored raised button with ripple -->
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-      Button
-    </button>
+    <!-- BEGIN Layout de página -->
+    <div class="main-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
-    <!-- Colored FAB button -->
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-    <i class="material-icons">add</i>
-    </button>
+      <!-- BEGIN Cabecera -->
+      <header class="mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+
+        <div class="mdl-layout__header-row">
+          <img class="logo-inset" src="images/banchile.svg"/>
+          <span class="mdl-layout-title">Inspector de código</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Introduzca una frase de búsqueda...</label>
+            </div>
+          </div>
+
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">more_vert</i>
+          </button>
+
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li class="mdl-menu__item">Acerca de...</li>
+            <li class="mdl-menu__item">Configuración</li>
+          </ul>
+        </div>
+
+      </header><!-- END Cabecera -->
+
+      <!-- BEGIN Contenido -->
+      <main class="mdl-layout__content mdl-color--grey-100">
+
+        <!-- BEGIN Grilla de contenido -->
+        <div class="mdl-grid main-grid-content">
+
+          <!-- BEGIN Panel izquierdo -->
+          <div class="left-panel mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet">
+            <h4 class="left-panel-title">Aplicativos</h4>
+
+            <ul class="demo-list-item mdl-list">
+            <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                    AAA_AAA_AAAAAAAA
+                  </button>
+                </span>
+            </li>
+            <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                    BBB_BBB_BBBBBBBB
+                  </button>
+                </span>
+            </li>
+            <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                    CCC_CCC_CCCCCCCCC
+                  </button>
+                </span>
+            </li>
+            <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                    DDD_DDD_DDDDDDDD
+                  </button>
+                </span>
+            </li>
+            </ul>
+
+          </div><!-- END Panel izquierdo -->
+
+          <!-- BEGIN Grilla derecha -->
+          <div class="right-grid mdl-cell mdl-cell--8-col mdl-cell--12-col-tablet mdl-grid mdl-grid--no-spacing">
+            <!-- BEGIN Panel superior derecho -->
+            <div class="upper-left-panel mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+
+              <h4 class="panel-title">Dashboard</h4>
+
+              <img class="donuts" src="images/donuts.png"/>
+              <img class="chart" src="images/chart.png"/>
+
+            </div><!-- END Panel superior derecho -->
+
+            <div class="panel-separator mdl-cell--1-col"></div>
+
+            <!-- BEGIN Panel inferior derecho -->
+            <div class="lower-right-panel mdl-card  mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--12-col-desktop">
+
+              <h4 class="panel-title">Reportes</h4>
+
+              <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <tbody>
+                  <tr>
+                    <td class="mdl-data-table__cell--non-numeric">
+                      <i class="material-icons mdl-list__item-icon">open_in_new</i>
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                      <a href="#">Junio de 2017</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="mdl-data-table__cell--non-numeric">
+                      <i class="material-icons mdl-list__item-icon">open_in_new</i>
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                      <a href="#">Mayo de 2017</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="mdl-data-table__cell--non-numeric">
+                      <i class="material-icons mdl-list__item-icon">open_in_new</i>
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                      <a href="#">Abril de 2017</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="mdl-data-table__cell--non-numeric">
+                      <i class="material-icons mdl-list__item-icon">open_in_new</i>
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                      <a href="#">Marzo de 2017</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div><!-- END Panel inferior derecho -->
+
+          </div><!-- END Grilla derecha -->
+
+        </div><!-- END Grilla de contenido -->
+
+      </main><!-- END Contenido -->
+
+    </div><!-- END Layout de página -->
+
   </body>
 </html>

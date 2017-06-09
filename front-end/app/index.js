@@ -1,11 +1,12 @@
-// JS
-import _ from 'lodash';
-import '../vendor/mdl/material';
-
 // CSS
-import '../vendor/mdl/material.css';
+import '../vendor/mdl/material.cyan-light_blue.min.css'; // Material Design Lite
 import '../styles/custom.css';
 
+// JavaScript
+import '../vendor/mdl/material'; // Material Design Lite
+import _ from 'lodash';
+
+/*
 function component () {
 	var element = document.createElement("div");
 
@@ -15,3 +16,5 @@ function component () {
 }
 
 document.body.appendChild(component());
+
+*/
