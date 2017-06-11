@@ -4,18 +4,16 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="apple-touch-icon-precomposed" href="images/favicon.png">
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="dist/favicon.png">
+    <link rel="shortcut icon" href="dist/favicon.ico">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="dist/bundle.css"> <!-- CSS compilado por Webpack -->
 
     <title>Inspector de código</title>
   </head>
   <body>
-    <!-- CSS y JavaScript compilados por Webpack -->
-    <script src="dist/bundle.js"></script>
-
     <!-- BEGIN Layout de página -->
     <div class="main-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
@@ -24,7 +22,7 @@
 
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title link-home"><a href="index.html">Inspector de código</a></span>
-          <img class="logo-inset" src="images/banchile.svg"/>
+          <img class="logo-inset" src="dist/banchile.svg"/>
           <div class="mdl-layout-spacer"></div>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
             <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -124,5 +122,7 @@
 
     </div><!-- END Layout de página -->
 
+    <!-- CSS y JavaScript compilados por Webpack -->
+    <script src="dist/bundle.js"></script>
   </body>
 </html>
