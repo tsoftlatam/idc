@@ -3,21 +3,26 @@
 
 ### Servicio REST de inspecciones
 
-Arranque la aplicacion con "mvn spring-boot:run"
+Implementa un repositorio de inspecciones (entidad `analysis`) que puede consultarse por fechas o por aplicativo. 
 
-* obtiene lista de analysis: http://localhost:8088/analysis
-* get analysis: http://localhost:8088/analysis/{id}
+Contrucción y arranque 
+`mvn spring-boot:run`
+
+Ejemplos URLs
+* obtiene lista de analysis: http://localhost:8088/services/analysis
+* get analysis: http://localhost:8088/services/analysis/1
 * buscar por aplicativo: http://localhost:8088/services/analysis/search/applications?application=CRS
 * buscar por fechas: http://localhost:8088/services/analysis/search/dates?initdate=20170101&enddate=20170630
 
-### Ejemplo lista de analisis devuelto (json)
+### Ejemplo respuesta lista de analisis (json)
 ```
 {
   "_embedded" : {
     "analysis" : [ {
       "application" : "CRS",
       "module" : "ADEP20170204",
-      "execdate" : "2017-06-12T02:42:38.340+0000",
+      "execdate" : "2017-06-12T03:25:34.737+0000",
+      "result" : "RECHAZADO",
       "_links" : {
         "self" : {
           "href" : "http://localhost:8088/services/analysis/1"
@@ -29,7 +34,8 @@ Arranque la aplicacion con "mvn spring-boot:run"
     }, {
       "application" : "CRS",
       "module" : "ART20161050",
-      "execdate" : "2017-06-12T02:42:38.344+0000",
+      "execdate" : "2017-06-12T03:25:34.754+0000",
+      "result" : "APROBADO",
       "_links" : {
         "self" : {
           "href" : "http://localhost:8088/services/analysis/2"
@@ -41,7 +47,8 @@ Arranque la aplicacion con "mvn spring-boot:run"
     }, {
       "application" : "SSDD",
       "module" : "DEV1.3",
-      "execdate" : "2017-06-12T02:42:38.344+0000",
+      "execdate" : "2017-06-12T03:25:34.754+0000",
+      "result" : "RECHAZADO",
       "_links" : {
         "self" : {
           "href" : "http://localhost:8088/services/analysis/3"
