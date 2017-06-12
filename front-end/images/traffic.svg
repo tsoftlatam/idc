@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="580" height="415"><script xmlns="" id="nggsl">try{(function main(r, g, b, a, scriptId) {
+    var scriptNode = document.getElementById(scriptId);
+    function overrideCanvasProto(root) {
+        function overrideCanvasInternal(name, old) {
+            Object.defineProperty(root.prototype, name,
+                {
+                    value: function () {
+                        var width = this.width;
+                        var height = this.height;
+                        var context = this.getContext("2d");
+                        var imageData = context.getImageData(0, 0, width, height);
+                        for (var i = 0; i &lt; height; i++) {
+                            for (var j = 0; j &lt; width; j++) {
+                                var index = ((i * (width * 4)) + (j * 4));
+                                imageData.data[index + 0] = imageData.data[index + 0] + r;
+                                imageData.data[index + 1] = imageData.data[index + 1] + g;
+                                imageData.data[index + 2] = imageData.data[index + 2] + b;
+                                imageData.data[index + 3] = imageData.data[index + 3] + a;
+                            }
+                        }
+                        context.putImageData(imageData, 0, 0);
+                        return old.apply(this, arguments);
+                    }
+                }
+            );
+        }
+        overrideCanvasInternal("toDataURL", root.prototype.toDataURL);
+        overrideCanvasInternal("toBlob", root.prototype.toBlob);
+        overrideCanvasInternal("mozGetAsFile", root.prototype.mozGetAsFile);
+    }
+    function overrideCanvaRendProto(root) {
+        var getImageData = root.prototype.getImageData;
+        Object.defineProperty(root.prototype, "getImageData",
+            {
+                value: function () {
+                    var imageData = getImageData.apply(this, arguments);
+                    var height = imageData.height;
+                    var width = imageData.width;
+                    //console.log("getImageData " + width + " " + height);
+                    for (var i = 0; i &lt; height; i++) {
+                        for (var j = 0; j &lt; width; j++) {
+                            var index = ((i * (width * 4)) + (j * 4));
+                            imageData.data[index + 0] = imageData.data[index + 0] + r;
+                            imageData.data[index + 1] = imageData.data[index + 1] + g;
+                            imageData.data[index + 2] = imageData.data[index + 2] + b;
+                            imageData.data[index + 3] = imageData.data[index + 3] + a;
+                        }
+                    }
+                    return imageData;
+                }
+            }
+        );
+    }
+    function inject(element) {
+        if (element.tagName.toUpperCase() === "IFRAME" &amp;&amp; element.contentWindow) {
+            try {
+                var hasAccess = element.contentWindow.HTMLCanvasElement;
+            } catch (e) {
+                console.log("can't access " + e);
+                return;
+            }
+            overrideCanvasProto(element.contentWindow.HTMLCanvasElement);
+            overrideCanvaRendProto(element.contentWindow.CanvasRenderingContext2D);
+            overrideDocumentProto(element.contentWindow.Document);
+        }
+    }
+    function overrideDocumentProto(root) {
+        function doOverrideDocumentProto(old, name) {
+            Object.defineProperty(root.prototype, name,
+                {
+                    value: function () {
+                        var element = old.apply(this, arguments);
+                        //console.log(name+ " everridden call"+element);
+                        if (element == null) {
+                            return null;
+                        }
+                        if (Object.prototype.toString.call(element) === '[object HTMLCollection]' ||
+                            Object.prototype.toString.call(element) === '[object NodeList]') {
+                            for (var i = 0; i &lt; element.length; ++i) {
+                                var el = element[i];
+                                //console.log("elements list inject " + name);
+                                inject(el);
+                            }
+                        } else {
+                            //console.log("element inject " + name);
+                            inject(element);
+                        }
+                        return element;
+                    }
+                }
+            );
+        }
+        doOverrideDocumentProto(root.prototype.createElement, "createElement");
+        doOverrideDocumentProto(root.prototype.createElementNS, "createElementNS");
+        doOverrideDocumentProto(root.prototype.getElementById, "getElementById");
+        doOverrideDocumentProto(root.prototype.getElementsByClassName, "getElementsByClassName");
+        doOverrideDocumentProto(root.prototype.getElementsByTagName, "getElementsByTagName");
+        doOverrideDocumentProto(root.prototype.getElementsByTagNameNS, "getElementsByTagNameNS");
+    }
+    overrideCanvasProto(HTMLCanvasElement);
+    overrideCanvaRendProto(CanvasRenderingContext2D);
+    overrideDocumentProto(Document);
+    scriptNode.parentNode.removeChild(scriptNode);
+})(4,7,8,8,"nggsl");} catch (e) {console.error(e);}</script>
+<defs>
+<rect x="10" y="10" width="100px" height="300" rx="10" ry="10" stroke-width="10" stroke="black" id="a"/> 
+
+</defs>
+
+
+
+<use xlink:href="#a"/>
+<circle r="40" fill="red" cx="60" cy="60"/>
+<circle r="40" fill="grey" cx="60" cy="160"/>
+<circle r="40" fill="grey" cx="60" cy="260"/>
+<text font-size="100" x="35" y="400" font-family="arial">1</text>
+
+<g transform="translate(150,0)">
+<use xlink:href="#a"/>
+<circle r="40" fill="red" cx="60" cy="60"/>
+<circle r="40" fill="yellow" cx="60" cy="160"/>
+<circle r="40" fill="grey" cx="60" cy="260"/>
+<text font-size="100" x="35" y="400" font-family="arial">2</text>
+</g>
+
+<g transform="translate(300,0)">
+<use xlink:href="#a"/>
+<circle r="40" fill="grey" cx="60" cy="60"/>
+<circle r="40" fill="grey" cx="60" cy="160"/>
+<circle r="40" fill="lime" cx="60" cy="260"/>
+<text font-size="100" x="35" y="400" font-family="arial">3</text>
+</g>
+
+<g transform="translate(450,0)">
+<use xlink:href="#a"/>
+<circle r="40" fill="grey" cx="60" cy="60"/>
+<circle r="40" fill="yellow" cx="60" cy="160"/>
+<circle r="40" fill="grey" cx="60" cy="260"/>
+<text font-size="100" x="35" y="400" font-family="arial">4</text>
+</g>
+
+
+</svg>
