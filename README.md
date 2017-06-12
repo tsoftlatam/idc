@@ -32,4 +32,4 @@ Luego:
     npm install
     npm run build
 
-Luego abrir en un navegador [file:front-end/index.html](file:front-end/index.html)
+Luego abrir en un navegador `dist/index.html`

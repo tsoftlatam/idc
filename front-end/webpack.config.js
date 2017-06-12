@@ -10,12 +10,13 @@ module.exports = {
 		}]
 	},
 	plugins: [
-		new extractCSS("bundle.css"),
-		new copyAssets([{ from: "images" }])
+		new extractCSS("css/bundle.css"),
+		new copyAssets([{ from: "images", to: "img" }]),
+		new copyAssets([{ from: "*.html" }])
 	],
 	entry: "./app/index.js",
 	output: {
-		filename: "bundle.js",
-		path: path.resolve(__dirname, "dist")
+		path: path.resolve(__dirname, "dist"),
+		filename: "js/bundle.js"
 	}
 };
