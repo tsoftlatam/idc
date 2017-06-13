@@ -2,7 +2,7 @@
   "name": "idc",
   "version": "1.0.0",
   "description": "Inspector de código",
-  "main": "app/index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "webpack"
   },

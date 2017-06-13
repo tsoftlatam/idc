@@ -14,7 +14,7 @@ module.exports = {
 		new copyAssets([{ from: "images", to: "img" }]),
 		new copyAssets([{ from: "*.html" }])
 	],
-	entry: "./app/index.js",
+	entry: "./src/index.js",
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "js/bundle.js"
