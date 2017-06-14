@@ -30,9 +30,7 @@ html, body {
 .main-layout .mdl-layout__header .mdl-layout__drawer-button {
 	color: rgba(0, 0, 0, 0.54);
 }
-.mdl-layout__drawer .avatar {
-	margin-bottom: 16px;
-}
+
 .main-layout .mdl-navigation__link {
 	display: -webkit-flex !important;
 	display: -ms-flexbox !important;
