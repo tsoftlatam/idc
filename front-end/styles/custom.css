@@ -71,7 +71,7 @@ html, body {
 
 .panel-title {
 	font-size: 100%;
-	margin: 0.5em 0 0.5em 1em;
+	margin: 0.5em 0 0.5em 2em;
 }
 
 .donut {
@@ -161,6 +161,12 @@ _:-ms-input-placeholder {
 	margin-left: 2em;
 	margin-bottom: 1em;
 	width: 90%;
+}
+
+.upper-right-panel table {
+	margin-left: 2em;
+	margin-bottom: 1em;
+	width: 80%;
 }
 
 .lower-right-panel .mdl-card__actions {

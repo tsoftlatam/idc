@@ -7,6 +7,10 @@ module.exports = {
 		rules: [{
 			test: /\.css$/,
 			use: extractCSS.extract({ use: 'css-loader' })
+		}, {
+			test: /\.jsx$/,
+			include: path.resolve(__dirname, "src"),
+			loader: 'babel-loader'
 		}]
 	},
 	plugins: [
@@ -14,7 +18,7 @@ module.exports = {
 		new copyAssets([{ from: "images", to: "img" }]),
 		new copyAssets([{ from: "*.html" }])
 	],
-	entry: "./src/index.js",
+	entry: path.resolve(__dirname, "src/index.jsx"),
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "js/bundle.js"
