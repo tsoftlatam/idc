@@ -34,6 +34,14 @@ class App extends React.Component {
 		this.setState({ tipo: tipo, aplicativo: aplicativo, modulo: modulo });
 	}
 
+	componentWillMount() {
+		fetch("http://localhost:8088/services/analysis").then(
+			(response) => response.json()
+		).then((data) => {
+			console.log(data)
+		})
+	}
+
 	render() {
 		return (
 			<div className="main-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
