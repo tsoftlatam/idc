@@ -1,6 +1,7 @@
 back-end/target
 back-end/.idea
 back-end/idc.iml
+back-end/src/main/webapp
 front-end/node_modules
 front-end/dist
 tmp
