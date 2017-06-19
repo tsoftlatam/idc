@@ -10,8 +10,8 @@ import javax.persistence.Id;
 @Entity
 public class Analysis {
 
-	@Id
-	private long id;
+	@Id	
+	private Long id;
 
 	private String application;
 
@@ -30,7 +30,7 @@ public class Analysis {
 
 	}
 
-	public Analysis(long id, String application, String module) {
+	public Analysis(Long id, String application, String module) {
 		this.id = id;
 		this.application = application;
 		this.module = module;
@@ -38,11 +38,11 @@ public class Analysis {
 		this.execdate = new Date();
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -64,6 +64,14 @@ public class Analysis {
 
 	public Date getExecdate() {
 		return execdate;
+	}
+
+	public ResultType getResult() {
+		return result;
+	}
+
+	public void setResult(ResultType result) {
+		this.result = result;
 	}
 
 }
