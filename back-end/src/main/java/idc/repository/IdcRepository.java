@@ -1,6 +1,5 @@
 package idc.repository;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +19,7 @@ import idc.model.Analysis;
  *
  */
 @RepositoryRestResource(collectionResourceRel = "analysis", path = "analysis")
-public interface IdcRepository extends CrudRepository<Analysis, Serializable> {
+public interface IdcRepository extends CrudRepository<Analysis, Long> {
 
 	// adding new query methods (see
 	// http://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation)
@@ -45,4 +44,6 @@ public interface IdcRepository extends CrudRepository<Analysis, Serializable> {
 	public List<Analysis> findByExecdateBetween(@DateTimeFormat(pattern = "yyyyMMdd") @Param("initdate") Date initialDate,
 	        @DateTimeFormat(pattern = "yyyyMMdd") @Param("enddate") Date endDate);
 
+	
+	
 }
