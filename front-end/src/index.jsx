@@ -11,27 +11,13 @@ import '../node_modules/mdl-selectfield/dist/mdl-selectfield.css';
 import '../styles/custom.css';
 
 const APLICATIVOS = [
-	"ADEP",
-	"ART",
-	"BCX",
-	"COMEX",
-	"CORE_FXC",
-	"EBANKFRMW",
-	"ELU",
-	"EVALUADOR",
-	"FABMIDDLE",
-	"IDG",
-	"INTERNETP",
-	"MI_APPS",
-	"MIPLATA_BACK",
-	"MRX",
-	"NVAINTEMP_SQL",
-	"PLA_COMER_DB",
-	"SCE",
-	"SCMC",
-	"SEFE",
-	"SOFTTOKEN",
-	"TERM_FINAN"
+	"CRS",
+	"SSDD"
+];
+
+const MODULOS = [
+	"ADEP20170204",
+	"ART20161050"
 ];
 
 
@@ -39,17 +25,13 @@ class App extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { tipo: "global", aplicativo: "" };
-		
-		this.onShow = this.onShow.bind(this);
+		this.state = { tipo: "resumen", aplicativo: APLICATIVOS[0], modulo: MODULOS[0] };
+
+		this.showPanel= this.showPanel.bind(this);
 	}
 
-	onShow(name) {
-		if(name === "_GLOBAL_") {
-			this.setState({ tipo: "global" });
-		} else {
-			this.setState({ tipo: "aplicativo", aplicativo: name });
-		}
+	showPanel(tipo, aplicativo, modulo) {
+		this.setState({ tipo: tipo, aplicativo: aplicativo, modulo: modulo });
 	}
 
 	render() {
@@ -59,10 +41,10 @@ class App extends React.Component {
 				<main className="mdl-layout__content mdl-color--grey-100">
 					<div className="mdl-grid main-grid-content">
 						<div className="left-panel mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet">
-							<Selector apps={APLICATIVOS} switcher={this.onShow}/>
+							<Selector aplicativos={APLICATIVOS} modulos={MODULOS} switcher={this.showPanel}/>
 						</div>
 
-						<Panel tipo={this.state.tipo} aplicativo={this.state.aplicativo}/>
+						<Panel tipo={this.state.tipo} aplicativo={this.state.aplicativo} modulo={this.state.modulo}/>
 					</div>
 				</main>
 			</div>

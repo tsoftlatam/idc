@@ -3,11 +3,9 @@ import React from 'react';
 function Cabecera(props) {
 	return (
 		<header className="mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
-
 			<div className="mdl-layout__header-row">
-
 				<span className="mdl-layout-title link-home">
-					<a href="index.html">Inspector de código</a>
+					<a href="index.html">Inspección de código</a>
 				</span>
 				<img className="logo-inset" src="img/banchile.svg"/>
 				<div className="mdl-layout-spacer"></div>

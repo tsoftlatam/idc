@@ -19,8 +19,9 @@ html, body {
 }
 
 .link-home a {
-	color: gray;
+	color: #40c4ff;
 	text-decoration: none;
+	margin-left: -2.7em;
 }
 
 .logo-inset {
@@ -45,7 +46,7 @@ html, body {
 	font-weight: 500;
 }
 
-.main-layout ..mdl-navigation__link:hover {
+.main-layout .mdl-navigation__link:hover {
 	background-color: #00BCD4;
 	color: #37474F;
 }
@@ -94,6 +95,11 @@ html, body {
 	height: 110px;
 }
 
+.left-panel button {
+	width: 85%;
+	margin-bottom: 1em;
+}
+
 .left-panel {
 	padding: 16px 32px;
 	display: -webkit-flex;
@@ -107,13 +113,18 @@ html, body {
 	        align-items: stretch;
 }
 
-.left-panel button {
-	width: 85%;
-}
-
 .left-panel ul li {
 	padding: 0; 
 	margin: 0; 
+}
+
+.upper-right-panel p {
+	margin: 1em 1em 1em 2em;
+}
+
+.upper-right-panel p i {
+	vertical-align: middle;
+	margin-right: 1em;
 }
 
 /* TODO: Find a proper solution to have the graphs
