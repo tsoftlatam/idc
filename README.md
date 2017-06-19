@@ -1,7 +1,7 @@
 Inspector de código (IDC)
 =========================
 
-Construido con [Spring Boot](https://spring.io/guides/gs/spring-boot/)
+Construido con [Spring Boot](https://spring.io/guides/gs/spring-boot/), [React](https://facebook.github.io/react/) y [Material Design Lite](https://getmdl.io/)
 
 Requerimientos
 --------------
@@ -10,26 +10,19 @@ Requerimientos
 * Maven 3.0 o superior
 * Node 6.11 o superior con NPM 3.10 o superior
 
-Construcción y ejecución del back-end
--------------------------------------
-
-    cd back-end
-    mvn package
-    java -jar target/idc-1.0-SNAPSHOT.jar
-
-Luego abrir en un navegador [http://localhost:8080/test](http://localhost:8080/test)
-
-Construcción del front-end
---------------------------
+Construcción y ejecución
+------------------------
 
 Instalar Webpack globalmente:
 
     npm install -g webpack
 
-Luego:
+Luego compilar el front end:
 
     cd front-end
     npm install
     npm run build
 
-Luego abrir en un navegador `dist/index.html`
+Para iniciar el back-end, `./runall.sh` (Linux) o `runall.bat` (Windows).
+
+Luego abrir en un navegador [http://localhost:8088/](http://localhost:8080/)
