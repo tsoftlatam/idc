@@ -10,36 +10,25 @@ import '../node_modules/mdl-selectfield/dist/mdl-selectfield';
 import '../node_modules/mdl-selectfield/dist/mdl-selectfield.css';
 import '../styles/custom.css';
 
-const APLICATIVOS = [
-	"CRS",
-	"SSDD"
-];
-
-const MODULOS = [
-	"ADEP20170204",
-	"ART20161050"
-];
-
+let aplicativos = {};
 
 class App extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { tipo: "resumen", aplicativo: APLICATIVOS[0], modulo: MODULOS[0] };
+
+		this.state = {
+			tipo: "resumen",
+			aplicativo: props.aplicativo,
+			modulo: props.modulo,
+			url: props.url
+		};
 
 		this.showPanel= this.showPanel.bind(this);
 	}
 
-	showPanel(tipo, aplicativo, modulo) {
-		this.setState({ tipo: tipo, aplicativo: aplicativo, modulo: modulo });
-	}
-
-	componentWillMount() {
-		fetch("http://localhost:8088/services/analysis").then(
-			(response) => response.json()
-		).then((data) => {
-			console.log(data)
-		})
+	showPanel(tipo, aplicativo, modulo, url) {
+		this.setState({ tipo: tipo, aplicativo: aplicativo, modulo: modulo, url: url });
 	}
 
 	render() {
@@ -49,10 +38,10 @@ class App extends React.Component {
 				<main className="mdl-layout__content mdl-color--grey-100">
 					<div className="mdl-grid main-grid-content">
 						<div className="left-panel mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet">
-							<Selector aplicativos={APLICATIVOS} modulos={MODULOS} switcher={this.showPanel}/>
+							<Selector aplicativos={aplicativos} aplicativo={this.state.aplicativo} modulo={this.state.modulo} url={this.state.url} switcher={this.showPanel}/>
 						</div>
 
-						<Panel tipo={this.state.tipo} aplicativo={this.state.aplicativo} modulo={this.state.modulo}/>
+						<Panel tipo={this.state.tipo} aplicativo={this.state.aplicativo} modulo={this.state.modulo} url={this.state.url}/>
 					</div>
 				</main>
 			</div>
@@ -60,4 +49,27 @@ class App extends React.Component {
 	}
 }
 
-render(<App/>, document.getElementById('root'));
+
+fetch("http://localhost:8088/services/analysis").then(
+	(response) => response.json()
+).then((data) => {
+	let analysis = data._embedded.analysis;
+
+	for(let i = 0; i < analysis.length; ++i) {
+		let a = analysis[i].application;
+		let m = analysis[i].module;
+		let url = analysis[i]._links.analysis.href;
+
+		if(aplicativos[a]) {
+			aplicativos[a].push({ module: m, url: url })
+		} else {
+			aplicativos[a] = [{ module: m, url: url }];
+		}
+	}
+
+	let a = Object.keys(aplicativos)[0];
+	let m = aplicativos[a][0].module; 
+	let url = aplicativos[a][0].url; 
+
+	render(<App aplicativo={a} modulo={m} url={url}/>, document.getElementById('root'));
+})

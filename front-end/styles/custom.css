@@ -95,6 +95,11 @@ html, body {
 	height: 110px;
 }
 
+.select-label {
+	color: #0090ff;
+	margin-bottom: -1.2em;
+}
+
 .left-panel button {
 	width: 85%;
 	margin-bottom: 1em;
